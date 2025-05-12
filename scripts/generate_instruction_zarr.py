@@ -39,8 +39,6 @@ if __name__ == '__main__':
 
 
     for eps in tqdm(eps_list):
-        image = eps['frames']
-
         task_dir = args.save_root
 
         instruction_fp = os.path.join(task_dir, eps['clip_id'], "instruction.zarr")

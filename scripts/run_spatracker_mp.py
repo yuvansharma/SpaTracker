@@ -154,7 +154,7 @@ if __name__ == "__main__":
     parser.add_argument(
         '--viz_freq',
         type=int,
-        default=1,
+        default=100,
         help='Frequency for saving visualizations (set to -1 for no visualization)',
         )
 
