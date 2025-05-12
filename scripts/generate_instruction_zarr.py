@@ -27,13 +27,13 @@ def save_arr_dict(data, out_zarr_path: str):
 if __name__ == '__main__':
     parser = argparse.ArgumentParser(description='Process rlbench, the input should be python dict including episodes')
     parser.add_argument('--eps_list', type=str,
-                        default='/datasets/lvma/current/llarva_v2/data/anns/real_kinova_release_folder/epic_clips.json')
+                        default='YOUR_PREFIX/epic_clips.json')
     parser.add_argument('--save_root', type=str,
-                        default='/datasets/llarva_v2/current/annotations/epic/epic_tasks_final/common_task')
+                        default='YOUR_PREFIX/epic_tasks_final/common_task')
 
     args = parser.parse_args()
     text_tokenizer = Text_Tokenizer()
-    
+
     # load the processing list
     eps_list = json.load(open(args.eps_list))
 
@@ -47,4 +47,3 @@ if __name__ == '__main__':
 
         instruction = text_tokenizer.tokenize(eps['instruction'])[0].numpy()
         save_arr_dict(instruction, instruction_fp)
-        breakpoint()

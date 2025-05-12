@@ -8,8 +8,8 @@ import sys
 import traceback
 from argparse import ArgumentParser
 
-CONDA_ENV = "/home/yuvan/anaconda3/envs/SpaTrack2"
-CONDA_PREFIX = "/home/yuvan/anaconda3"
+CONDA_ENV = "/home/USER/anaconda3/envs/SpaTrack"
+CONDA_PREFIX = "/home/USER/anaconda3"
 
 def run_spatracker_script(arguments):
     """
@@ -140,14 +140,14 @@ if __name__ == "__main__":
     parser.add_argument(
         '--epic_path',
         type=str,
-        default="/datasets/llarva_v2/current/annotations/epic/epic_tasks_final/common_task",
+        default="YOUR_PREFIX/epic_tasks_final/common_task",
         help='Path to the Epic Kitchen root folder with episode-wise images.json files',
         )
 
     parser.add_argument(
         '--viz_outdir',
         type=str,
-        default="/datasets/llarva_v2/current/annotations/epic/epic_tasks_final_viz",
+        default="epic_tasks_final_viz",
         help='Directory to store video visualization',
         )
 
