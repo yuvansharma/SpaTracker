@@ -1,3 +1,4 @@
+cupy-cuda12x==12.2.0
 easydict==1.13
 opencv-python==4.9.0.80
 moviepy==1.0.3
@@ -7,4 +8,5 @@ einops==0.7.0
 timm==0.6.7
 scikit-image==0.22.0
 scikit-learn==1.4.1.post1
-cupy==12.2.0
+zarr==2.18.3
+open_clip_torch

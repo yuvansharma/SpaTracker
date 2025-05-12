@@ -15,7 +15,37 @@ import torch.nn.functional as F
 import torchvision.transforms as transforms
 from moviepy.editor import ImageSequenceClip
 import matplotlib.pyplot as plt
+import json
 
+def get_images(path:str, process_single_frame:bool):
+    # handle direct image path
+    frames = []
+    if path.lower().endswith(('.jpg', '.jpeg', '.png')):
+        frame = cv2.imread(path)
+        if frame is not None:
+            frames.append(np.array(cv2.cvtColor(frame, cv2.COLOR_BGR2RGB)))
+        else:
+            print(f"Error reading image {path}")
+        return frames
+
+    # handle json
+    with open(path,'r') as f:
+        data = json.load(f)
+
+    imgs_paths = data['observation/ego_image']
+    for path in imgs_paths:
+        frame = cv2.imread(path)
+        if frame is not None:
+            frames.append(np.array(cv2.cvtColor(frame, cv2.COLOR_BGR2RGB)))
+        else:
+            print(f"Error reading image {path}")
+        if process_single_frame:
+            break
+
+    if len(frames) == 0:
+        print("No images found in the sequence")
+        return None
+    return np.stack(frames)
 
 def read_video_from_path(path):
     cap = cv2.VideoCapture(path)
