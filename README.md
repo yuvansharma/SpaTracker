@@ -59,13 +59,29 @@ To reproduce our 3D point annotations for the Epic-Kitchens dataset:
 - Download the dataset from [https://epic-kitchens.github.io](https://epic-kitchens.github.io)
 - Download `epic_clips.json` and `epic_tasks_final.zip` from [Huggingface](https://huggingface.co/datasets/yuvansharma/arm4r-data)
 
-The `epic_tasks_final` folder contains episode-level JSON files with image paths. These paths include a placeholder that must be replaced with the actual path to your downloaded Epic-Kitchens data. You can use the script below to do this. For the prefix, provide the path before (and not including) the "frames" folder of the downloaded Epic-Kitchens data.
+The structure of the `epic_tasks_final` folder is shown below:
+
+```
+epic_tasks_final/common_task
+│ 
+└── 000000
+│   ├── instruction.zarr
+│   └── points.zarr
+│   └── images.json
+└── 000001
+│   ├── instruction.zarr
+│   └── points.zarr
+│   └── images.json
+│...
+```
+
+Note that the ```images.json``` files have image paths that include a placeholder. This placeholder must be replaced with the actual path to your downloaded Epic-Kitchens data. You can use the script below to do this. For the prefix argument, provide the path before (and not including) the "frames" folder of the downloaded Epic-Kitchens data.
 
 ```python
 python scripts/rename_epic_prefix.py --root_dir path_to/epic_tasks_final/common_task --prefix path_to_epic_kitchens_data
 ```
 
-### 2. Extracting 3D Points
+### 2. Extracting 3D Points (Optional)
 
 To generate `points.zarr` files (note: this will overwrite existing ones in `epic_tasks_final.zip`):
 
@@ -78,7 +94,7 @@ cd SpaTracker/scripts
 python run_spatracker_mp.py --epic_path path_to/epic_tasks_final/common_task --gpu_ids 0,1,2,3
 ```
 
-### 3. Generating Instruction Zarr Files
+### 3. Generating Instruction Zarr Files (Optional)
 
 To extract `instruction.zarr` files (also included in the original data from Huggingface, will be overwritten):
 
