@@ -77,7 +77,7 @@ epic_tasks_final/common_task
 
 Note that the ```images.json``` files have image paths that include a placeholder. This placeholder must be replaced with the actual path to your downloaded Epic-Kitchens data. You can use the script below to do this. For the prefix argument, provide the path before (and not including) the "frames" folder of the downloaded Epic-Kitchens data.
 
-```python
+```bash
 python scripts/rename_epic_prefix.py --root_dir path_to/epic_tasks_final/common_task --prefix path_to_epic_kitchens_data
 ```
 
