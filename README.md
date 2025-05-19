@@ -81,6 +81,8 @@ Note that the ```images.json``` files have image paths that include a placeholde
 python scripts/rename_epic_prefix.py --root_dir path_to/epic_tasks_final/common_task --prefix path_to_epic_kitchens_data
 ```
 
+Note: if you are already using the [arm4r](https://github.com/Dantong88/arm4r) repository, this script is also available under the ```tools``` directory for convenience.
+
 ### 2. Extracting 3D Points (Optional)
 
 To generate `points.zarr` files (note: this will overwrite existing ones in `epic_tasks_final.zip`):
